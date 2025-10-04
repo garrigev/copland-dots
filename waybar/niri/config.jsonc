@@ -1,0 +1,207 @@
+// Global 
+{
+    "layer": "top",
+    "position": "top",
+    "height": 35, 
+    "margin": 0,  
+    // If height property would be not present, it'd be calculated dynamically
+    //"margin-top": -35,
+
+    "modules-left": [
+        "custom/power",
+        "custom/launcher",
+        "custom/terminal",
+        "niri/workspaces",
+        "custom/weather",
+        "tray"
+    ],
+ 
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "network",
+        "pulseaudio",
+        "backlight",
+        //"disk",
+        "memory",
+        "cpu",
+        "battery"
+    ],
+
+    // Modules
+
+    "battery": {
+        "interval": 5,
+        "states": {
+            "warning": 30,
+            "critical": 15 },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": " {usage}%", 
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "on-click": "kitty -e 'btop'"
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": " {}%", 
+        "on-click": "kitty -e 'btm'", 
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "network": {
+        "interval": 5,
+        "format-wifi": " ", 
+        "format-ethernet": " ", 
+        "format-disconnected": "⚠ Disconnected",
+	      "tooltip-format": "{ifname}: {ipaddr}  -  {bandwidthTotalBytes}",
+        "on-click": "kitty -e 'nmtui'"
+    },
+
+    "network#vpn": {
+        "interface": "tun0",
+        "format": " ",
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "niri/workspaces": {
+      "disable-scroll": true,
+      "disable-markup" : false,
+      "all-outputs": true,
+      "format": "{icon}"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}% ",
+        "format-bluetooth-muted": "󰸈 ",
+        "format-muted": "󰸈",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "וֹ",
+            "headset": " 󰋋 ",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["󰕾"]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%"
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+     },
+
+    "backlight" :{
+         "format": "{icon} {percent}%",
+         "format-icons": [""],
+	       "on-scroll-down": "brightnessctl -c backlight set 1%-",
+         "on-scroll-up": "brightnessctl -c backlight set +1%"
+    },
+
+    "disk": {
+        "interval": 5,
+        "format": " {percentage_used}%",
+        "on-click": "exec nemo",
+        "tooltip-format": "wip"
+    },
+
+    // to use the weather module replace <your_location> with your city or town
+    // note: do not use spaces: new york would be newyork
+    "custom/weather": {
+        "exec": "~/.config/waybar/scripts/weather.sh Antwerp", 
+        "return-type": "json",
+        "interval": 600
+    },
+
+    "custom/firefox": {
+        "format": " ",
+        "on-click": "exec firefox",
+        "tooltip": false
+    },
+
+    "custom/terminal": {
+        "format": "",
+        "on-click": "exec kitty",
+        "tooltip-format": "kitty"
+    },
+
+    "custom/files": {
+        "format": "",
+        "on-click": "exec nemo",
+        "tooltip-format": "launch nemo"
+    },
+
+    "custom/launcher": {
+        "format":"󱓟 ",
+        "on-click": "exec wofi -c ~/.config/wofi/config -I",
+        "tooltip-format": "launcher"
+    },
+
+    "custom/power": {
+        "format":" ",
+        "on-click": "exec wlogout",
+        "tooltip": false
+    },
+
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "󰗃"
+        },
+        "escape": true
+        // "exec": "/usr/bin/python3 $HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null" // Script in resources folder
+    },
+
+    "clock": {
+        "layer": "overlay",
+        "position": "top",
+        "interval": 30,
+        "format": "{:%H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    }
+}
+

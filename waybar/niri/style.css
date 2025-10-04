@@ -1,0 +1,126 @@
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    color: #66ACED;
+}
+
+/* The whole bar */
+window#waybar {
+    background-color: rgba(0,0,0,0.5); 
+    font-family: BigBlueTermPlus Nerd Font;
+    font-size: 15px;
+}
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+@keyframes blink-critical {
+    70% {
+      color: white;
+    }
+
+    to {
+        color: white;
+        background-color: red;
+    }
+}
+
+/* Every modules */
+#battery,
+#clock,
+#backlight,
+#cpu,
+#memory,
+#workspaces,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#disk,
+#custom-launcher,
+#custom-power,
+#custom-terminal,
+#custom-fiefox,
+#custom-files,
+#custom-weather,
+#custom-media {
+    padding: 0.25rem 0.50rem;
+    margin: 1px 6px;
+    background-color: rgba(0,0,0,0);
+    border-radius: 20px;
+}
+
+/* -----------------------------------------------------------------------------
+ * Modules styles
+ * -------------------------------------------------------------------------- */
+
+#battery {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    padding-right: 15px;
+}
+
+#battery.warning,
+#cpu.warning,
+#memory.warning {
+    color: orange;
+}
+
+#battery.critical,
+#cpu.critical,
+#memory.critical {
+    color: red;
+}
+
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#network.disconnected {
+    color: orange;
+}
+
+#workspaces {
+}
+
+#workspaces button {
+    margin-bottom: 0px;
+    color: #dfdfdf;
+}
+
+#workspaces button.active {
+    border-bottom: 1px solid;
+    margin-bottom: 1px;
+    padding-left:0;
+}
+
+#workspaces button.urgent {
+    border-color: #c9545d;
+    color: #c9545d;
+}
+
+#custom-power {
+    padding-left: 15px;
+}
+
+#custom-weather {
+    margin: 0 -5px;
+}
+
+#clock{
+    padding: 0.25rem 0.50rem;
+    margin: 1px 6px;
+    background-color: rgba(0,0,0,0);
+    border-radius: 20px;
+}

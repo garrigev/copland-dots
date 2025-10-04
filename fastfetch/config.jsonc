@@ -1,0 +1,89 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+      "source": "~/.config/fastfetch/copland-ascii-art.txt",
+      "type": "file",
+      "color": {
+        "1": "blue"
+      }
+    },
+    "modules": [
+        {
+          "type": "title",
+          "format": "{user-name}@{host-name}",
+          "keyColor": "blue"
+        },
+        "separator",
+        
+        {
+          "type": "host",
+          //"format": "{1}", 
+          "format": "Lenovo IdeaPad Slim 5", 
+          "keyColor": "blue"
+        },
+        {
+          "type": "cpu",
+          "format": "{1} @ {7}",
+          "keyColor": "blue"
+        },
+        {
+          "type": "gpu",
+          "keyColor": "blue"
+        },
+        {
+          "type": "display",
+          "key": "Display",
+          "keyColor": "blue",
+          "format": "{inch}\" {width}x{height}"
+        },
+        "break",
+
+        {
+          "type": "os",
+          "format": "Copland OS Enterprise",
+          "keyColor": "blue"
+        },
+        {
+          "type": "kernel",
+          "keyColor": "blue"
+        },
+
+        {
+          "type": "uptime",
+          "keyColor": "blue"
+        },
+        {
+            "type": "disk",
+            "folders": "/",  
+            "format": "{create-time}",
+            "key": "Date of Birth",
+            "keyColor": "blue"
+        },
+        "break",
+
+        {
+          "type": "wm", 
+          "format": "{1}", 
+          "keyColor": "blue"
+        },
+        //{
+          //"type": "Editor",
+          //"format": "{2}", 
+          //"keyColor": "blue"
+        //},
+        {
+          "type": "packages",
+          "keyColor": "blue"
+        },
+        {
+          "type": "terminal", 
+          "format": "{5}", 
+          "keyColor": "blue"
+        },
+        {
+          "type": "shell", 
+          "format": "{6}", 
+          "keyColor": "blue"
+        }
+    ]
+}

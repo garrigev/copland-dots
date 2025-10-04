@@ -1,0 +1,46 @@
+@define-color blueue #65ACED;
+
+*{
+    /*font-family: JetBrains Mono Nerd Font;*/
+}
+
+window {
+    border-radius: 18px;
+    color: #fffff;
+    position: relative;
+    background: @blueue;
+    padding: 1px;
+}
+
+#input {
+    margin-bottom: 15px;
+    padding:3px;
+    border-radius: 5px;
+    border:none;
+    outline:none;
+    color: @blueue;
+    background-color: #0a0a0a;
+}
+
+#inner-box {
+    color: @blueue
+}
+
+#outer-box {
+    margin: 3px;
+    padding:15px;
+    background-color: #0a0a0a;
+    /*background-color: #000000;*/
+    border-radius: 18px;
+}
+
+#text {
+    padding: 5px;
+}
+
+#entry:selected {
+    color: black;
+    background-color: @blueue;
+    border:none;
+    outline:none;
+}
